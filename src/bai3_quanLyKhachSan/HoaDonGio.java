@@ -40,8 +40,12 @@ public class HoaDonGio extends HoaDon {
 	@Override
 	public void nhap(Scanner scan) {
 		super.nhap(scan);
-	System.out.println("Vui long nhap so gio thue: ");
-	this.soGioThue = Integer.parseInt(scan.nextLine());
+		do {
+			System.out.println("Vui long nhap so gio thue: ");
+			System.out.println("Hoa don nay danh cho khach hang dat phong duoi 30 gio.");
+			this.soGioThue = Integer.parseInt(scan.nextLine());
+		}while (soGioThue>30 ||soGioThue<=0);
+
 	System.out.println("Vui long nhap don gia theo gio: ");
 	this.donGiaGio = Float.parseFloat(scan.nextLine());
 	}
@@ -58,7 +62,7 @@ public class HoaDonGio extends HoaDon {
 	public void tinhTienTheoGio() {
 		if (this.soGioThue < 24) {
 			this.thanhTien = this.soGioThue * this.donGiaGio;
-		} else if (this.soGioThue >= 24 &&this.soGioThue < 30 ) {
+		} else if (this.soGioThue >= 24 &&this.soGioThue <= 30 ) {
 			this.thanhTien = 24 * this.donGiaGio;
 		}
 	}

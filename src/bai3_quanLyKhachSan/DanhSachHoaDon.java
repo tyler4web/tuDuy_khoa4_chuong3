@@ -45,7 +45,7 @@ public class DanhSachHoaDon {
 		do {
 			System.out.println("Nhập 1. Tinh tien theo gio");
 			System.out.println("Nhập 2. Tinh tien theo ngay");
-			System.out.println("Nhập 0. thoat");
+			System.out.println("Nhập 0. thoat va xuat danh sach hoa don");
 			int chon = Integer.parseInt(scan.nextLine());
 			switch (chon) {
 			case 1:
@@ -80,12 +80,7 @@ public class DanhSachHoaDon {
 	public void tinhTien() {
 		for (HoaDon hd : this.listHoaDon) {
 			if (hd instanceof HoaDonGio) {
-				float soGioThue = ((HoaDonGio) hd).getSoGioThue();
-				if (soGioThue <= 24) {
-					hd.thanhTien = soGioThue * hd.donGiaGio;
-				} else if (soGioThue > 24 && soGioThue <= 30) {
-					hd.thanhTien = soGioThue * 24;
-				}
+
 				((HoaDonGio) hd).tinhTienTheoGio();
 
 			} else {
@@ -104,7 +99,7 @@ public class DanhSachHoaDon {
 
 		hd = new HoaDonGio(3, 1, 9, 2013, 1, "nobita", 30, 30);
 		this.listHoaDon.add(hd);
-		hd = new HoaDonGio(3, 1, 9, 2013, 1, "nobita", 40, 40);
+		hd = new HoaDonGio(3, 1, 9, 2013, 1, "nobita", 40, 15);
 		this.listHoaDon.add(hd);
 
 		hd = new HoaDonNgay(4, 1, 9, 2013, 1, "xuka", 10, 1);
