@@ -1,4 +1,4 @@
-package tuDuy_khoa4_chuong3;
+package bai1_quanLyNhaDat;
 import java.util.Scanner;
 
 /*
@@ -11,7 +11,7 @@ public class GiaoDichNha extends GiaoDich{
 	   //1. attributes
 	private int loaiNha;
 	private String diaChi;
-	private float doanhThu;
+//	private float doanhThu;
 	
 	//2. get, set
 
@@ -47,6 +47,13 @@ public class GiaoDichNha extends GiaoDich{
 			// TODO Auto-generated constructor stub
 		}
 		
+		public GiaoDichNha(int maGiaoDich, int ngayGD, int thangGD, int namGD, float donGia, float dienTich, int loaiNha, String diaChi) {
+			super(maGiaoDich, ngayGD, thangGD, namGD, donGia, dienTich);
+			this.loaiNha =loaiNha;
+			this.diaChi = diaChi;
+			
+		}
+
 		//4. input, output
 		@Override
 		public void nhap(Scanner scan) {
@@ -72,27 +79,25 @@ public class GiaoDichNha extends GiaoDich{
 					
 			System.out.print("Nhập dia chi: ");
 			this.diaChi = scan.nextLine();
-			this.doanhThu = tinhDoanhThuNha();
+//	
 		}
 		
 		@Override 
 		public void xuat() {
 			super.xuat();
-			System.out.println("\t Doanh Thu Nha: " + this.doanhThu + "\t dia chi: " + this.diaChi);
+			System.out.println("\t Loai Nha: " + this.loaiNha + "\t dia chi: " + this.diaChi);
 		}
 		
 		//5. business
 		//tinh doanh thu giao dich Dat
-		public float tinhDoanhThuNha () {
-			
-			if (this.loaiNha == 1) {//nha cao cap
-				this.doanhThu = this.dienTich * this.donGia;
-			} else {//nha thuong
-				this.doanhThu = this.dienTich * this.donGia *90/100;
-			}
-			
-			return this.doanhThu;
-		}
+//		public void tinhDoanhThuNha () {
+//			
+//			if (this.loaiNha == 1) {//nha cao cap
+//				this.doanhThu = this.dienTich * this.donGia;
+//			} else {//nha thuong
+//				this.doanhThu = this.dienTich * this.donGia *90/100;
+//			}
+//		}
 		
 		
 

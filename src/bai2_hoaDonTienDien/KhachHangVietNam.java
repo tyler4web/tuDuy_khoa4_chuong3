@@ -10,14 +10,15 @@ import java.util.Scanner;
  * */
 public class KhachHangVietNam extends KhachHang {
 	// 1. attributes
-	private String doiTuong;
+	public static int DINHMUC = 100;
+	private int doiTuong;
 	// 2. get, set
 
-	public String getDoiTuong() {
+	public int getDoiTuong() {
 		return doiTuong;
 	}
 
-	public void setDoiTuong(String doiTuong) {
+	public void setDoiTuong(int doiTuong) {
 		this.doiTuong = doiTuong;
 	}
 
@@ -27,7 +28,7 @@ public class KhachHangVietNam extends KhachHang {
 	}
 
 	public KhachHangVietNam(int maKH, String hoTenKH, int ngayHoaDon, int thangHoaDon, int namHoaDon,
-			float soluongKWTieuThu, float donGia, String doiTuong) {
+			float soluongKWTieuThu, float donGia, int doiTuong) {
 		super(maKH, hoTenKH, ngayHoaDon, thangHoaDon, namHoaDon, soluongKWTieuThu, donGia);
 		this.doiTuong = doiTuong;
 	}
@@ -36,7 +37,6 @@ public class KhachHangVietNam extends KhachHang {
 	@Override
 	public void nhap(Scanner scan) {
 		super.nhap(scan);
-		tinhHoaDonVietnamese();
 		boolean flag = true;
 		do {
 			System.out.print("Nhập doi tuong: ");
@@ -46,20 +46,19 @@ public class KhachHangVietNam extends KhachHang {
 			int chon = Integer.parseInt(scan.nextLine());
 			switch (chon) {
 			case 1:
-				doiTuong = "Dien Sinh Hoat";
-				flag = false;
+				this.doiTuong = 1;// 1.Dien Sinh Hoat"
 				break;
 			case 2:
-				doiTuong = "Dien Kinh Doanh";
-				flag = false;
+				this.doiTuong = 2;// 2. Dien Kinh Doanh
 				break;
 			case 3:
-				doiTuong = "Dien San Xuat";
-				flag = false;
+				this.doiTuong = 3;// 3."3. Dien San Xuat"
 				break;
 			case 0:
 				flag = false;
 				break;
+			default:
+				System.out.println("Vui long 1, 2 hoac 3.");
 			}
 		} while (flag);
 	}
@@ -67,18 +66,21 @@ public class KhachHangVietNam extends KhachHang {
 	@Override
 	public void xuat() {
 		super.xuat();
-		System.out.println("\t Đối tượng khách hàng  " + this.doiTuong 
-				+ "\t Tổng hóa đơn: " + this.thanhTien);
-
+		if (this.doiTuong == 1) {
+			System.out.println("\t Đối tượng khách hàng: Dien Sinh Hoat  " + "\t Tổng hóa đơn: " + this.thanhTien);
+		} else if (this.doiTuong == 2) {
+			System.out.println("\t Đối tượng khách hàng: Dien Kinh Doanh  " + "\t Tổng hóa đơn: " + this.thanhTien);
+		} else {
+			System.out.println("\t Đối tượng khách hàng: Dien San Xuat  " + "\t Tổng hóa đơn: " + this.thanhTien);
+		}
 	}
-	
-	//5. business methods
-	
+	// 5. business methods
+
 	public void tinhHoaDonVietnamese() {
 		if (this.soluongKWTieuThu <= DINHMUC) {
-			this.thanhTien = this.soluongKWTieuThu*this.donGia;
+			this.thanhTien = this.soluongKWTieuThu * this.donGia;
 		} else {
-			this.thanhTien = this.donGia*DINHMUC + (this.soluongKWTieuThu-DINHMUC)*this.donGia*2.5f;
+			this.thanhTien = this.donGia * DINHMUC + (this.soluongKWTieuThu - DINHMUC) * this.donGia * 2.5f;
 		}
 	}
 

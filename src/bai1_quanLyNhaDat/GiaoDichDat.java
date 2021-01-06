@@ -1,4 +1,4 @@
-package tuDuy_khoa4_chuong3;
+package bai1_quanLyNhaDat;
 
 import java.util.Scanner;
 
@@ -62,29 +62,26 @@ public class GiaoDichDat extends GiaoDich {
 				stop = true;
 			}
 		} while (!stop);
-
-		this.doanhThu = tinhDoanhThuDat();
 		
 	}
 
 	@Override
 	public void xuat() {
 		super.xuat();
-		System.out.println("\t Doanh Thu Dat: " + this.doanhThu + "\t Loai Dat: " + this.loaiDat);
+		System.out.println("\t Loai Dat: " + this.loaiDat);
 	}
 
 	// 5. business
 
 	// tinh doanh thu giao dich Dat
-	public float tinhDoanhThuDat() {
-		float doanhThuDat = this.doanhThu;
-		if (this.loaiDat.equalsIgnoreCase("a")) {
-			doanhThuDat = this.dienTich * this.donGia;
-		} else {
-			doanhThuDat = this.dienTich * this.donGia * 1.5f;
-		}
-		return doanhThuDat;
-
-	}
+//	public void tinhDoanhThuDat() {
+//		this.doanhThu = 0;
+//		if (this.loaiDat.equalsIgnoreCase("a")) {
+//			this.doanhThu = this.dienTich * this.donGia;
+//		} else {
+//			this.doanhThu= this.dienTich * this.donGia * 1.5f;
+//		}
+//
+//	}
 
 }

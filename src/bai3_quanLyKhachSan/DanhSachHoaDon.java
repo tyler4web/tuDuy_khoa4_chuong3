@@ -3,6 +3,8 @@ package bai3_quanLyKhachSan;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import bai2_hoaDonTienDien.KhachHangVietNam;
+
 /*
  * Mục đích: Xử lý nghiệp vụ liên quan đến quan ly khach san
  * Người tạo:Bui Quoc Trieu
@@ -12,8 +14,7 @@ import java.util.Scanner;
 public class DanhSachHoaDon {
 	// 1. attributes
 	private ArrayList<HoaDon> listHoaDon;
-	private float thanhTienGio;
-	private float thanhTienNgay;
+//	protected float tien;
 
 	// 2, get, set
 	public ArrayList<HoaDon> getListHoaDon() {
@@ -24,20 +25,17 @@ public class DanhSachHoaDon {
 		this.listHoaDon = listHoaDon;
 	}
 
-	public float getThanhTienGio() {
-		return thanhTienGio;
-	}
-
-	public float getThanhTienNgay() {
-		return thanhTienNgay;
-	}
 
 	// 3. constructors
 
 	public DanhSachHoaDon() {
 		listHoaDon = new ArrayList<HoaDon>();
-		this.thanhTienGio = 0;
-		this.thanhTienNgay = 0;
+
+	}
+
+	public DanhSachHoaDon(ArrayList<HoaDon> listHoaDon) {
+		super();
+		this.listHoaDon = listHoaDon;
 	}
 
 	// 4. input, out
@@ -73,10 +71,50 @@ public class DanhSachHoaDon {
 			hd.xuat();
 		}
 	}
-	
+
 	// 5. business method
-	
-	
-	
+	public void init() {
+		tinhTien();
+	}
+
+	public void tinhTien() {
+		for (HoaDon hd : this.listHoaDon) {
+			if (hd instanceof HoaDonGio) {
+				float soGioThue = ((HoaDonGio) hd).getSoGioThue();
+				if (soGioThue <= 24) {
+					hd.thanhTien = soGioThue * hd.donGiaGio;
+				} else if (soGioThue > 24 && soGioThue <= 30) {
+					hd.thanhTien = soGioThue * 24;
+				}
+				((HoaDonGio) hd).tinhTienTheoGio();
+
+			} else {
+				((HoaDonNgay) hd).tinhThanhTienTheoNgay();
+			}
+		}
+	}
+
+	public void dummyData() {
+		HoaDon hd;
+		hd = new HoaDonGio(1, 1, 9, 2013, 1, "nobita", 10, 10);
+		this.listHoaDon.add(hd);
+
+		hd = new HoaDonGio(2, 1, 1, 2013, 1, "nobita", 25, 20);
+		this.listHoaDon.add(hd);
+
+		hd = new HoaDonGio(3, 1, 9, 2013, 1, "nobita", 30, 30);
+		this.listHoaDon.add(hd);
+		hd = new HoaDonGio(3, 1, 9, 2013, 1, "nobita", 40, 40);
+		this.listHoaDon.add(hd);
+
+		hd = new HoaDonNgay(4, 1, 9, 2013, 1, "xuka", 10, 1);
+		this.listHoaDon.add(hd);
+
+		hd = new HoaDonNgay(5, 1, 9, 2013, 1, "deki", 20, 2);
+		this.listHoaDon.add(hd);
+
+		hd = new HoaDonNgay(6, 1, 9, 2013, 1, "xeko", 30, 3);
+		this.listHoaDon.add(hd);
+	}
 
 }

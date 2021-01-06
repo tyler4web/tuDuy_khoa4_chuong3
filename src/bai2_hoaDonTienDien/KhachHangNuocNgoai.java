@@ -38,7 +38,7 @@ public class KhachHangNuocNgoai extends KhachHang {
 		super.nhap(scan);
 		tinhHoaDonForeigner();
 		System.out.print("Nhập quoc tich: ");
-		quocTich = scan.nextLine();
+		this.quocTich = scan.nextLine();
 
 	}
 

@@ -5,7 +5,7 @@
  * Version:1.0
  * */
 
-package tuDuy_khoa4_chuong3;
+package bai1_quanLyNhaDat;
 
 import java.util.Scanner;
 
@@ -104,9 +104,9 @@ public class GiaoDich {
 	}
 
 	public void xuat() {
-		System.out.print("Mã giao dịch: " + this.maGiaoDich + "\t Ngày giao dịch: " + this.ngayGD
+		System.out.println("Mã giao dịch: " + this.maGiaoDich + "\t Ngày giao dịch: " + this.ngayGD
 				+ "\t Thang giao dịch: " + this.thangGD + "\t Nam giao dịch: " + this.namGD + "\t Đơn giá: "
-				+ this.donGia + "\t Diện tích: " + this.dienTich);
+				+ this.donGia + "\t Diện tích: " + this.dienTich + "\t Thanh tien: " + this.doanhThu);
 	}
 
 }

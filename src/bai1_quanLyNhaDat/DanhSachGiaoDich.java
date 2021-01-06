@@ -1,4 +1,4 @@
-package tuDuy_khoa4_chuong3;
+package bai1_quanLyNhaDat;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -76,18 +76,13 @@ public class DanhSachGiaoDich {
 				giaoDich = new GiaoDichDat();
 				giaoDich.nhap(scan);
 				this.listGiaoDich.add(giaoDich);
-				this.SLGiaoDichDat = tinhSoLuongGiaoDichDat();
 				break;
 			case 2:
 				giaoDich = new GiaoDichNha();
 				giaoDich.nhap(scan);
 				this.listGiaoDich.add(giaoDich);
-				this.SLGiaoDichNha = tinhSoLuongGiaoDichNha();
 				break;
 			case 0:
-				this.tongDoanhThu = tinhTongDoanhThu();
-				this.doanhThuDat = tinhDoanhThuDat();
-				this.TBGiaoDichDat = tinhTBGiaoDichDat();
 				flag = false;
 				break;
 			}
@@ -109,67 +104,101 @@ public class DanhSachGiaoDich {
 
 	public void xuatGDTheoThoiGian() {
 		for (GiaoDich gd : this.listGiaoDich) {
-			if (gd.thangGD == 9 && gd.namGD == 2013) {
-				gd.xuat();
+			if (gd instanceof GiaoDichDat) {
+				if (gd.thangGD == 9 && gd.namGD == 2013) {
+					gd.xuat();
+				}
 			}
 		}
 	}
 
 	// 5. business
-	public float tinhTongDoanhThu() {
+
+	public void init() {
+		tinhDoanhThuDat();
+		tinhDoanhThuNha();
+		tinhSoLuongGiaoDichDat();
+		tinhSoLuongGiaoDichNha();
+		tinhTongDoanhThu();
+		tinhTBGiaoDichDat();
+	}
+
+	public void tinhTongDoanhThu() {
 		this.tongDoanhThu = 0;
 		for (GiaoDich gd : this.listGiaoDich) {
 			this.tongDoanhThu += gd.getDoanhThu();
 		}
-
-		return tongDoanhThu;
 	}
 
-	public float tinhDoanhThuDat() {
+	public void tinhDoanhThuDat() {
 		this.doanhThuDat = 0;
 		for (GiaoDich gd : this.listGiaoDich) {
 			if (gd instanceof GiaoDichDat) {
+				if (((GiaoDichDat) gd).getLoaiDat().equalsIgnoreCase("a")) {
+					gd.doanhThu = gd.dienTich * gd.donGia;
+				} else {
+					gd.doanhThu = gd.dienTich * gd.donGia * 1.5f;
+				}
 
 				this.doanhThuDat += gd.getDoanhThu();
 			}
 		}
-
-		return doanhThuDat;
 	}
 
 	public void tinhDoanhThuNha() {
-		this.doanhThuNha = 0;
+//		this.doanhThuNha = 0;
 		for (GiaoDich gd : this.listGiaoDich) {
 			if (gd instanceof GiaoDichNha) {
-
-				this.doanhThuNha += gd.getDoanhThu();
+				if (((GiaoDichNha) gd).getloaiNha() == 1) {// nha cao cap
+					gd.doanhThu = gd.dienTich * gd.donGia;
+				} else {// nha thuong
+					gd.doanhThu = gd.dienTich * gd.donGia * 90 / 100;
+				}
 			}
 		}
 	}
 
-	public int tinhSoLuongGiaoDichDat() {
+	public void tinhSoLuongGiaoDichDat() {
 		this.SLGiaoDichDat = 0;
 		for (GiaoDich gd : this.listGiaoDich) {
 			if (gd instanceof GiaoDichDat) {
 				this.SLGiaoDichDat++;
 			}
 		}
-		return this.SLGiaoDichDat;
 	}
 
-	public int tinhSoLuongGiaoDichNha() {
+	public void tinhSoLuongGiaoDichNha() {
 		this.SLGiaoDichNha = 0;
 		for (GiaoDich gd : this.listGiaoDich) {
 			if (gd instanceof GiaoDichNha) {
 				this.SLGiaoDichNha++;
 			}
 		}
-		return this.SLGiaoDichNha;
 	}
 
-	public float tinhTBGiaoDichDat() {
+	public void tinhTBGiaoDichDat() {
 		this.TBGiaoDichDat = this.doanhThuDat / this.SLGiaoDichDat;
-		return TBGiaoDichDat;
+	}
+
+	public void dummyData() {
+		GiaoDich giaoDich;
+		giaoDich = new GiaoDichDat(1, 1, 9, 2013, 100, 10, "b");
+		this.listGiaoDich.add(giaoDich);
+		giaoDich = new GiaoDichDat(2, 1, 7, 2013, 200, 20, "c");
+		this.listGiaoDich.add(giaoDich);
+		giaoDich = new GiaoDichDat(3, 1, 8, 2013, 300, 30, "a");
+		this.listGiaoDich.add(giaoDich);
+		giaoDich = new GiaoDichDat(4, 1, 9, 2013, 400, 40, "b");
+		this.listGiaoDich.add(giaoDich);
+		giaoDich = new GiaoDichDat(5, 1, 9, 2013, 500, 50, "a");
+		this.listGiaoDich.add(giaoDich);
+		giaoDich = new GiaoDichNha(6, 1, 9, 2013, 100, 10, 1, "1 Hai Ba Trung");
+		this.listGiaoDich.add(giaoDich);
+		giaoDich = new GiaoDichNha(7, 1, 9, 2013, 200,20,2,"2 Hai Ba Trung");
+		this.listGiaoDich.add(giaoDich);
+		giaoDich = new GiaoDichNha(8, 1, 9, 2013, 300,30,1,"2 Hai Ba Trung");
+		this.listGiaoDich.add(giaoDich);
+		
 	}
 
 }

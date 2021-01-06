@@ -29,11 +29,11 @@ public class HoaDonNgay extends HoaDon {
 		super();
 	}
 
-	public HoaDonNgay(int maHD, int ngayHD, int thangHD, int namHD, int maPhong, String tenKH, float donGia,
-			float soGioThue, float soNgayThue) {
-		super(maHD, ngayHD, thangHD, namHD, maPhong, tenKH, donGia);
+	public HoaDonNgay(int maHD, int ngayHD, int thangHD, int namHD, int maPhong, String tenKH, float donGiaNgay, float soNgayThue) {
+		super(maHD, ngayHD, thangHD, namHD, maPhong, tenKH, soNgayThue);
 //		this.soGioThue = soGioThue;
 		this.soNgayThue = soNgayThue;
+		this.donGiaNgay = donGiaNgay;
 	}
 
 	// 4. input, output
@@ -43,20 +43,19 @@ public class HoaDonNgay extends HoaDon {
 		System.out.println("Vui long nhap so ngay thue: ");
 		this.soNgayThue = Integer.parseInt(scan.nextLine());
 		System.out.println("Vui long nhap don gia theo ngay: ");
-		this.donGia = Float.parseFloat(scan.nextLine());
-		tinhThanhTienTheoNgay();
+		this.donGiaNgay = Float.parseFloat(scan.nextLine());
 	}
 
 	@Override
 	public void xuat() {
 		super.xuat();
 		
-		System.out.println("\t So ngay thue: " + this.soNgayThue +"\t Đơn giá theo ngay: " + this.donGia + "\t Thanh tien theo ngay: " + this.thanhTien);
+		System.out.println("\t So ngay thue: " + this.soNgayThue +"\t Đơn giá theo ngay: " + this.donGiaNgay + "\t Thanh tien theo ngay: " + this.thanhTien);
 	}
 
 	// 5. business
 	public void tinhThanhTienTheoNgay() {
-		this.thanhTien = this.donGia * this.soNgayThue;
+		this.thanhTien = this.donGiaNgay * this.soNgayThue;
 	}
 
 }

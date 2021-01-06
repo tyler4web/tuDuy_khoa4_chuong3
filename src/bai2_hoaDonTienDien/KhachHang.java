@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class KhachHang {
 
 	// 1. Attributes
-	public static int DINHMUC = 100;
+	
 	protected int maKH;
 	protected String hoTenKH;
 	protected int ngayHoaDon;

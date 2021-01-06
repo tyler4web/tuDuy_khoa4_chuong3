@@ -27,11 +27,14 @@ public class HoaDonGio extends HoaDon {
 		super();
 	}
 
-	public HoaDonGio(int maHD, int ngayHD, int thangHD, int namHD, int maPhong, String tenKH, float donGia,
+	public HoaDonGio(int maHD, int ngayHD, int thangHD, int namHD, int maPhong, String tenKH, float donGiaGio,
 			float soGioThue) {
-		super(maHD, ngayHD, thangHD, namHD, maPhong, tenKH, donGia);
+		super(maHD, ngayHD, thangHD, namHD, maPhong, tenKH, soGioThue);
 		this.soGioThue = soGioThue;
+		this.donGiaGio = donGiaGio;
 	}
+	
+	
 	
 	// 4. input, output
 	@Override
@@ -40,27 +43,24 @@ public class HoaDonGio extends HoaDon {
 	System.out.println("Vui long nhap so gio thue: ");
 	this.soGioThue = Integer.parseInt(scan.nextLine());
 	System.out.println("Vui long nhap don gia theo gio: ");
-	this.donGia = Float.parseFloat(scan.nextLine());
-	this.thanhTien = tinhThanhTienTheoGio();
+	this.donGiaGio = Float.parseFloat(scan.nextLine());
 	}
 	
 	@Override
 	public void xuat() {
 		super.xuat();
 		System.out.println("\t số giờ thuê: " + this.soGioThue
-				+ "\t Đơn giá theo giờ: " + this.donGia
+				+ "\t Đơn giá theo giờ: " + this.donGiaGio
 				+ "\t Thanh tien theo gio: " + this.thanhTien);
 	}
 	
 	// 5. business
-	public float tinhThanhTienTheoGio() {
-		float thanhTienGio = 0;
+	public void tinhTienTheoGio() {
 		if (this.soGioThue < 24) {
-			thanhTienGio = this.soGioThue * this.donGia;
+			this.thanhTien = this.soGioThue * this.donGiaGio;
 		} else if (this.soGioThue >= 24 &&this.soGioThue < 30 ) {
-			thanhTienGio = 24 * this.donGia;
+			this.thanhTien = 24 * this.donGiaGio;
 		}
-		return thanhTienGio;
 	}
 	
 	

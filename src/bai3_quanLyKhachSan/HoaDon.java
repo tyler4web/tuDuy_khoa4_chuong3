@@ -17,7 +17,8 @@ public class HoaDon {
 		protected int namHD;
 		protected int maPhong;
 		protected String tenKH;
-		protected float donGia;
+		protected float donGiaGio;
+		protected float donGiaNgay;
 		protected float thanhTien;
 		
 //2. Get, Set
@@ -57,18 +58,24 @@ public class HoaDon {
 		public void setTenKH(String tenKH) {
 			this.tenKH = tenKH;
 		}
-		public float getDonGia() {
-			return donGia;
+
+		public float getDonGiaGio() {
+			return donGiaGio;
 		}
-		public void setDonGia(float donGia) {
-			this.donGia = donGia;
+		public void setDonGiaGio(float donGiaGio) {
+			this.donGiaGio = donGiaGio;
+		}
+		public float getDonGiaNgay() {
+			return donGiaNgay;
+		}
+		public void setDonGiaNgay(float donGiaNgay) {
+			this.donGiaNgay = donGiaNgay;
 		}
 		public float getThanhTien() {
 			return thanhTien;
 		}
 		// 3. constructors
 		public HoaDon() {
-			this.donGia = 0;
 			this.thanhTien =0;
 		}
 		public HoaDon(int maHD, int ngayHD, int thangHD, int namHD, int maPhong, String tenKH, float donGia) {
@@ -79,9 +86,20 @@ public class HoaDon {
 			this.namHD = namHD;
 			this.maPhong = maPhong;
 			this.tenKH = tenKH;
-			this.donGia = donGia;
 		}
 		
+		public HoaDon(int maHD, int ngayHD, int thangHD, int namHD, int maPhong, String tenKH, float donGiaGio,
+				float donGiaNgay) {
+			super();
+			this.maHD = maHD;
+			this.ngayHD = ngayHD;
+			this.thangHD = thangHD;
+			this.namHD = namHD;
+			this.maPhong = maPhong;
+			this.tenKH = tenKH;
+			this.donGiaGio = donGiaGio;
+			this.donGiaNgay = donGiaNgay;
+		}
 		// 4. input, output
 		public void nhap(Scanner scan) {
 			System.out.print("Nhập mã hóa đơn: ");
@@ -103,8 +121,8 @@ public class HoaDon {
 		
 		public void xuat() {
 			System.out.print("Mã hóa đơn: " + this.maHD + "\t Ngày : " + this.ngayHD
-					+ "\t Tháng: " + this.thangHD + "\t Năm: " + this.namHD + "\t Đơn giá: "
-					+ this.donGia + "\t Tên Khách Hàng: " + this.tenKH
+					+ "\t Tháng: " + this.thangHD + "\t Năm: " + this.namHD 
+				 + "\t Tên Khách Hàng: " + this.tenKH
 					+ "\t Mã phòng: " + this.maPhong			
 					);
 		}

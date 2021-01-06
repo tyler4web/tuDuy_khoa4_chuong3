@@ -9,7 +9,9 @@ public class XuLy {
 
 		DanhSachHoaDon objDSHD = new DanhSachHoaDon();
 		Scanner scan = new Scanner (System.in);
-		objDSHD.nhap(scan);
+//		objDSHD.nhap(scan);
+		objDSHD.dummyData();
+		objDSHD.init();
 		objDSHD.xuat();
 	}
 
